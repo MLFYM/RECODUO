@@ -1,0 +1,98 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Measurement variability calculator (RECIST 1.1)</title>
+
+    <!-- Import Google Fonts -->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
+
+    <!-- Import Bootstrap css files -->
+    <link href="{% static 'calcmain/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'calcmain/css/bootstrap-theme.min.css' %}" rel="stylesheet">
+
+    <!-- Import Bokeh css files -->
+    <link href="{% static 'calcmain/css/bokeh-0.12.4.min.css' %}" rel="stylesheet">
+
+    <!-- Import Custom css files -->
+    <link href="{% static 'calcmain/css/style.css' %}" rel="stylesheet">
+
+    <!-- Apply favicon files -->
+    <link rel="shortcut icon" href="{% static 'calcmain/images/favicon.ico' %}">
+    <link rel="icon" type="image/png" sizes="36x36"  href="{% static 'calcmain/images/android-icon-36x36.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'calcmain/images/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{% static 'calcmain/images/favicon-96x96.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'calcmain/images/favicon-16x16.png' %}">
+</head>
+
+
+<body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header" style="width: 100%;">
+                <a class="navbar-brand" href="/" style="font-weight: 600;">Measurement variability calculator (RECIST 1.1)</a>
+                <span class="navbar-brand navbar-overlay" id="open_nav">&#9776; Contact us</span>
+            </div>
+        </div>
+    </nav>
+
+
+    {% block content %}
+    {% endblock %}
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="text-muted">Measurement variability calculator (RECIST 1.1)</p>
+        </div>
+    </footer>
+
+
+    <!-- The overlay contact form using [ https://formspree.io/ ]-->
+    <div id="myNav" class="overlay">
+      <!-- Button to close the overlay navigation -->
+      <a href="javascript:void(0)" class="closebtn" id="close_nav">&times;</a>
+      <!-- Overlay content -->
+      <div class="overlay-content div-aligncenter div-centered" style="margin-top: 3%;">
+        <iframe id="contact_us" src="{% url 'calcmain:contact_us' %}" height="100%" width="100%" style="border: none;"></iframe>
+      </div>
+    </div>
+
+
+    <!-- for ContactUs on navbar -->
+    <script>
+    document.getElementById('open_nav').onclick = function() {
+        document.getElementById("myNav").style.height = "100%";
+    }
+    document.getElementById('close_nav').onclick = function() {
+        document.getElementById("myNav").style.height = "0%";
+        setTimeout(function(){
+            document.getElementById('contact_us').src = document.getElementById('contact_us').src
+        }, 500);
+    }
+    </script>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="{% static 'calcmain/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'calcmain/js/bokeh-0.12.4.min.js' %}"></script>
+
+    <!-- JS files for overlay loading animations -->
+    <script src="{% static 'calcmain/js/jquery-3.1.1.min-loading.js' %}"></script>
+    <script src="{% static 'calcmain/js/loadingoverlay.min.js' %}"></script>
+    <script src="{% static 'calcmain/js/loadingoverlay_progress.min.js' %}"></script>
+    <script src="{% static 'calcmain/js/demo-loading.js' %}"></script>
+
+</body>
+
+</html>

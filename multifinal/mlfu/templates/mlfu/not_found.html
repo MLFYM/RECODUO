@@ -1,0 +1,38 @@
+{% extends 'mlfu/base.html' %}
+{% load staticfiles %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Oops!</title>
+  </head>
+  <body>
+    <br>
+    <br>
+    <br>
+    <br>
+    <center><h1>추천곡은 "{{result.recomm_song.1}}"의 "{{result.recomm_song.0}}"입니다</h1></center>
+    <center><h1>죄송합니다ㅠㅜ 웹 상에서 해당 곡을 찾지 못했습니다.</h1></center>
+    <br>
+    <br>
+    <center>
+      <a href="https://www.melon.com/search/total/index.htm?q={{ result.recomm_song.1 }}+{{ result.recomm_song.0 }}" target="_blank"><img src="{% static 'img/melon2.png' %}" width='110pt' border="0"/></a>
+      <a href="https://music.bugs.co.kr/search/integrated?q={{ result.recomm_song.1 }}+{{result.recomm_song.0 }}" target="_blank"><img src="{% static 'img/logo_bugs.png' %}" width='92pt' border="0"/></a>&nbsp;&nbsp;
+      <a href="https://www.genie.co.kr/search/searchMain?query={{result.recomm_song.1 }}+{{result.recomm_song.0 }}" target="_blank"><img src="{% static 'img/geine.png' %}" width='90pt' border="0"/></a>&nbsp;&nbsp;<br>
+
+      <center><input type="button" class="button button1" value="전 페이지로 돌아가기"  style="width:245pt;height:35pt;font-size:20px;" onclick="history.back(-1);"></center>
+
+
+    </center>
+
+    <br>
+    <br><br>
+    <br><br>
+    <br><br>
+    <br><br>
+    <br><br>
+    <br><br>
+  </body>
+</html>
+{% endblock %}

@@ -1,0 +1,234 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+<!-- 시작 페이지 -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Front Page</title>
+  <link href="data:image/x-icon;base64,AAABAAEAEBAQAAAAAAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA1arNAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABEAEQAAAAAAEQARAAAAAAABAAEAAAAAAAEAAQAAAAAAAQABAAAAAAABAAEBEAAAAAEREQEQAAEQAAAAABAAARAAAAAAEAAAEAAAAAAQAAAQAAAAABEQABAAAAAAAAAAERAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//wAA8z8AAPM/AAD7vwAA+78AAPu/AAD7pwAA+CcAAJ/3AACf9wAA3/cAAN/xAADf/wAAx/8AAP//AAD//wAA" rel="icon" type="image/x-icon" />
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'vendor/simple-line-icons/css/simple-line-icons.css' %}">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Audiowide|Iceland|Monoton|Pacifico|Press+Start+2P|Vampiro+One' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/css?family=Anton|Montserrat|Oswald|Roboto+Slab|Ubuntu&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Stylish&display=swap&subset=korean" rel="stylesheet">
+
+  <!-- Plugin CSS -->
+  <link rel="stylesheet" href="{% static 'device-mockups/device-mockups.min.css' %}">
+
+  <!-- Custom styles for this template -->
+  <link href="{% static 'css/github_font.css' %}" rel="stylesheet">
+  <link href="{% static 'css/new-age.min.css' %}" rel="stylesheet">
+
+<style>
+  table {
+    width: 100%;
+    text-align: center;
+  }
+  a {
+    text-decoration: none;
+  }
+</style>
+
+
+</head>
+
+<body id="page-top">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">HearUrFace</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#download">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#features">Features</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#contact">Developers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#contact">Feedback</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+<!-- 첫 번째 탭 -->
+  <header class="masthead">
+    <div class="container h-100">
+      <div class="row h-100">
+        <div class="col-lg-7 my-auto">
+          <div class="header-content mx-auto">
+            <h1 class="mb-4" style="font-family: Stylish;margin-top:-77px;">오늘도 만나서 반가워요 <br>지금, 어떤 기분이신가요?</h1>
+            <a href="http://127.0.0.1:8000/test/" class="btn btn-outline btn-xl js-scroll-trigger" style="font-family: Stylish; font-size: 18px">시작하기</a>
+          </div>
+        </div>
+        <div class="col-lg-5 my-auto">
+          <div class="device-container">
+            <div class="device-mockup macbook">
+              <div class="device" style="width:600px;height:400px;left:-160px;top:-178px;">
+                <div class="screen">
+                  <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
+                  <img src="{% static 'img/colabo.gif' %}" style="width: auto; height: auto;" class="img-fluid" alt="">
+                </div>
+                <div class="button">
+                  <!-- You can hook the "home button" to some JavaScript events or just remove it -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+<!-- 서비스 소개 탭 -->
+  <section class="cta" id="download">
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="overlay"></div>
+  </section>
+
+<!-- 서비스 활용 탭 -->
+  <section class="features" id="features">
+    <div class="container">
+      <div class="section-heading text-center">
+        <h2>No more searching, Just play</h2>
+        <p class="text-muted">Check out what you can do with this app!</p>
+        <hr>
+      </div>
+      <div class="row">
+        <div class="col-lg-4 my-auto">
+          <div class="device-container">
+            <div class="device-mockup iphone6_plus portrait white">
+              <div class="device">
+                <div class="screen">
+                  <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
+                  <img src="{% static 'img/cp1.gif' %}" class="img-fluid" alt="">
+                </div>
+                <div class="button">
+                  <!-- You can hook the "home button" to some JavaScript events or just remove it -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-8 my-auto">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="feature-item">
+                  <i class="icon-camera text-primary"></i>
+                  <h3>Just click</h3>
+                  <p class="text-muted">AI classifiy your emotion just one click! Wait for your marvelous playlist:)</p>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="feature-item">
+                  <i class="icon-present text-primary"></i>
+                  <h3>Customized playlist</h3>
+                  <p class="text-muted">We'll give you question and make new playlist. You can get your own customized playlist!</p>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="feature-item">
+                  <i class="icon-screen-smartphone text-primary"></i>
+                  <h3>Flexible in devices</h3>
+                  <p class="text-muted">Ready to use any devices! At first start with your notebook!</p>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="feature-item">
+                  <i class="icon-lock-open text-primary"></i>
+                  <h3>Free to Use</h3>
+                  <p class="text-muted">As always, our app is free to download and use for any purpose. Enjoy it!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 개발자 소개 탭 -->
+  <section class="contact bg-primary" id="contact">
+    <h2>We are
+      <i class="fas fa-heart"></i>
+      Developers!</h2>
+    <div class="container">
+      <ul class="list-inline list-social"><br>
+
+            <center><table>
+              <tr>
+                <td><a href="https://github.com/WinterBlue16" target="_blank"><img src="{% static 'img/profile_lkh.png' %}" style="margin-bottom:13px;" width="220px" class="profile" alt=""></a><br>
+                  <h5>KyungHee Lee</h5><br>
+                  <strong><i class="far fa-envelope"></i>&nbsp;E-mail :</strong> leekh090163@gmail.com<br>
+                  <strong><i class="fas fa-thumbtack"></i>&nbsp;Task :</strong> Modeling, Front-end, scraping code, documentation</td>
+                <td><a href="https://github.com/dannylee93" target="_blank"><img src="{% static 'img/profile_ldk.jpg' %}" style="margin-bottom:13px;" width="220px" class="profile" alt=""></a><br>
+                  <h5>DongKyu Lee</h5><br>
+                  <strong><i class="far fa-envelope"></i>&nbsp;E-mail :</strong> easternstar1005@gmail.com<br>
+                  <strong><i class="fas fa-thumbtack"></i>&nbsp;Task :</strong> Music recommendation algorithm, documentation</td>
+                  <td><a href="https://github.com/kimjis92" target="_blank"><img src="{% static 'img/kjs_profile.jpg' %}" style="margin-bottom:13px;" width="220px" class="profile" alt=""></a><br>
+                <h5>JiSeung Kim</h5><br>
+                  <strong><i class="far fa-envelope"></i>&nbsp;E-mail :</strong> rlawltmd7@naver.com<br>
+                  <strong><i class="fas fa-thumbtack"></i>&nbsp;Task :</strong> Modeling, Back-end, Web distribution</td>
+              </tr>
+
+            </table></center>
+
+      </ul>
+    <!-- </div> -->
+  </section>
+  <footer>
+    <div class="container">
+      <p>&copy; Your Website 2020. All Rights Reserved.</p>
+      <ul class="list-inline">
+        <li class="list-inline-item">
+          <a href="#">Privacy</a>
+        </li>
+        <li class="list-inline-item">
+          <a href="#">Terms</a>
+        </li>
+        <li class="list-inline-item">
+          <a href="#">FAQ</a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="{% static 'js/new-age.min.js' %}"></script>
+
+</body>
+
+</html>

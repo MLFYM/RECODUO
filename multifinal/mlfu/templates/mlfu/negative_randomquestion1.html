@@ -1,0 +1,114 @@
+{% extends 'mlfu/base.html' %}
+{% load staticfiles %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<br>
+<br>
+<br>
+<br>
+  <head><center><h1>Q. 당신은 어떤 연도의 음악을 선호하십니까?</h1></center><br>
+    <meta charset="utf-8">
+    <title>질문 1(찡그림)</title>
+    <style>
+    #mainNav{
+      padding:9px;
+    }
+    </style>
+  </head>
+  <body>
+    <p align='center'><input type='button' id="show_button" class='button button1 options' value='80년대' style="width:300pt;height:35pt;font-size:20px;" onclick="onYouTubeIframeAPIReady2('PLPKZ6FAxaaf-_lMPVx_8lqjrbzoQz1bs-');"></p>
+    <p align='center'><input type='button' id="show_button" class='button button1 options' value='90년대' style="width:300pt;height:35pt;font-size:20px;" onclick="onYouTubeIframeAPIReady2('PLPKZ6FAxaaf9HzZluME97m3YR8VW8eecu');"></p>
+    <p align='center'><input type='button' id="show_button" class='button button1 options' value='00년대' style="width:300pt;height:35pt;font-size:20px;" onclick="onYouTubeIframeAPIReady2('PLPKZ6FAxaaf_xuAQPdNiL8vpNXmlbPpDt');"></p>
+    <p align='center'><input type='button' id="show_button" class='button button1 options' value='10년대' style="width:300pt;height:35pt;font-size:20px;" onclick="onYouTubeIframeAPIReady2('PLPKZ6FAxaaf8ZgzLvW8WWpAHxS4unCEwv');"></p><br>
+
+
+    <center><div id="player2"></div></center><br>
+  <br>
+    <!-- <p align='center'><input type='button' class="button button1" id='select' value='처음으로 돌아가기' style="width:300pt;height:35pt;font-size:20px;" onclick="location.href='http://127.0.0.1:8000/home/'"></p> -->
+    <form method="POST" name="send_playlist" action="http://127.0.0.1:8000/camera2/check_playlist/">
+      {% csrf_token %}
+      <input type="hidden" name="playlistid" value="">
+      <input type="hidden" name="videoid" value="">
+      <center><input type="button" id="select" class="button button1" value="관련 추천곡 들어보기" style="width:300pt;height:35pt;font-size:20px;display:none;" onclick="videoidsubmit(); send_playlist.submit();"></center>
+    </form>
+      <br>
+  <center><button type='button' class="button button1" id='reselect' value='reselect' style="width:300pt;height:35pt;font-size:20px;display:none;" onclick="window.location.reload()">다시 선택하시겠습니까?</center><br>
+
+    <!-- jquery 사용 -->
+  <script>
+
+          // 2. This code loads the IFrame Player API code asynchronously.
+          var tag = document.createElement('script');
+
+          tag.src = "https://www.youtube.com/iframe_api";
+          var firstScriptTag = document.getElementsByTagName('script')[0];
+          firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+          function onYouTubeIframeAPIReady2(playlist_url) {
+              document.send_playlist.playlistid.value=playlist_url;
+
+              var numPl = Math.floor((Math.random() * 100) + 1);
+              var player2 = new YT.Player("player2", {
+                  remember_last_time : false,
+                  height: '290',
+                  width: '540',
+                  playerVars: {
+                      listType:'playlist',
+                      list: playlist_url,
+                      index: numPl,
+                      autoplay: 1, // 자동재생
+                      loop: 1, // 반복재생
+
+      },
+                  events: {
+                      'onReady': function (event) {
+                          setTimeout(function() {
+                              event.target.setShuffle({'shufflePlaylist' : true});
+                          }, 100);
+                      }
+                  }
+                });
+                myPlayer = player2;
+                console.log(myPlayer);
+                return myPlayer;
+            };
+            $(function () {
+              $("[id=show_button]").on('click', function () {
+                $("[id=select]").show();
+                $("[id=reselect]").show();
+
+        });
+    });
+    function videoidsubmit(){
+      var video_id = myPlayer.getVideoData()[Object.keys(myPlayer.getVideoData())[0]];
+      console.log(video_id)
+      document.send_playlist.videoid.value=video_id;
+    }
+
+    </script>
+    <div id="modal" class="searchModal">
+    <div class="search-modal-content" style="width: 376px;">
+    <div class="page-header">
+    <h2>음악 추천 중입니다....</h2>
+    <hr>
+    </div>
+    <div class="row">
+    <div class="col-sm-12">
+    <img src="{% static 'img/Ripple-1s-200px.gif' %}" style="width: 200px; height: 200px;" alt="">
+    </div>
+    </div>
+    </div>
+    </div>
+    <script type="text/javascript">
+
+        $(document).ready(function(){
+          $("#select").button().click(function(){
+        $("#modal").show();
+     });
+  });
+      </script>
+    <br><br><br><br><br><br><br><br><br><br>
+    </body>
+</html>
+{% endblock %}

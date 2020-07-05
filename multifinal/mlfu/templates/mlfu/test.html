@@ -1,0 +1,151 @@
+{% extends 'mlfu/base.html' %}
+{% load staticfiles %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>사진 촬영</title>
+    <style>
+    /* 웹캠 거울 모드 */
+    video{
+      transform: rotateY(180deg);
+      -webkit-transform:rotateY(180deg); /* Safari and Chrome */
+    -moz-transform:rotateY(180deg);}
+
+    /* 캡처 이미지 거울 모드 */
+    canvas{
+      transform: rotateY(180deg);
+      -webkit-transform:rotateY(180deg);
+    -moz-transform:rotateY(180deg);}
+
+    a {
+      line-height: 46px;
+      text-align: center;
+    }
+
+    #player {
+      outline-style: dotted;
+      outline-width: 5px;
+      outline-color: #fdcc52
+    }
+
+    #snapshot {
+      outline-style: groove;
+      outline-width: 5px;
+      outline-color: #fdcc52
+    }
+    #modal {
+      text-align: center;
+    }
+
+
+    </style>
+</head>
+<body>
+<br>
+<br>
+<br>
+<br>
+<center>
+<!-- 웹캠 화면 -->
+<video id="player" controls autoplay width="490" height="375"></video>
+</center><br>
+<p align='center'>
+<button id="capture" class="button button1" style="width:370pt;height:35pt;font-size:20px;" onclick="location.href='#snapshot'">Capture</button>
+</p>
+<p align='center'>
+<a href="http://127.0.0.1:8000/image_upload/" class="button button1" style="width:370pt;height:35pt;font-size:20px;">이미지 업로드하기</a>
+</p>
+<p align='center'>
+<canvas id="snapshot" width="490" height="375"></canvas>
+</p>
+<p id='imagedt'></p>
+
+<!-- 동영상 플레이어 재생 -->
+<script>
+var player = document.getElementById('player');
+var snapshotCanvas = document.getElementById('snapshot');
+var captureButton = document.getElementById('capture');
+var videoTracks;
+
+var handleSuccess = function(stream) {
+ // Attach the video stream to the video element and autoplay.
+ player.srcObject = stream;
+ videoTracks = stream.getVideoTracks();
+};
+
+captureButton.addEventListener('click', function() {
+ var context = snapshot.getContext('2d');
+ context.drawImage(player, 0, 0, 490, 375);
+
+ // Stop all video streams.
+ videoTracks.forEach(function(track) {track.stop()});
+});
+
+navigator.mediaDevices.getUserMedia({video: true})
+   .then(handleSuccess);
+</script>
+
+  <div>
+    <h2><p style="text-align: center;">이 사진으로 음악을 틀어드릴까요?</p></h2>
+
+
+    <center><button type="button" class="button button1" id="submit" style="width:250pt;height:30pt;">네</button></center><br>
+    <center><button type="button" class="button button1" id="submit" style="width:250pt;height:30pt;" onclick="window.location.reload()">다시 찍을래요</button></center>
+    <form name="imgform" method='post' action="http://127.0.0.1:8000/camera2/" enctype="multipart/form-data">{% csrf_token %}
+      <input id='imgsend' name='imgsendinput' type="hidden" value="">
+    </form>
+    <script type="text/javascript">
+        $('#submit').click(function(){
+                var canvas = document.getElementById("snapshot")
+                image_data = canvas.toDataURL('image/jpeg');
+
+                document.getElementById('imgsend').value = image_data
+                document.imgform.submit()
+
+
+          });
+    </script>
+
+    <!-- 새로고침 시 top으로 올라가게 설정 -->
+    <script>
+    history.scrollRestoration = "manual"
+    </script>
+    <img id="theImage" />
+    <!-- 카메라 촬영 안내 모달창 -->
+  </div>
+  <div id="modal" class="searchModal">
+  <div class="search-modal-content" style="width: 376px;">
+  <div class="page-header">
+  <h2>카메라를 쳐다보세요</h2>
+  <hr>
+  </div>
+  <div class="row">
+  <div class="col-sm-12">
+  <h3>5초 후 자동 캡처됩니다.</h3>
+  <div class="row">
+  <div class="col-sm-12">
+  <img src="{% static 'img/camera.gif' %}" style="width: 280px; height: 200px;" alt="">
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+
+  <!-- 모달창 자동 닫기, 자동 웹캠 사진 캡처 -->
+    <script>
+    jQuery(document).ready(function () {
+    $("#modal").show();
+    });
+    setTimeout(function(){
+      $(".searchModal").hide();
+    },3000);
+    setTimeout(function() {
+      document.getElementById('capture').click();
+    }, 8000);
+    </script>
+</body>
+</html>
+
+{% endblock %}

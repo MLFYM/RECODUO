@@ -1,0 +1,74 @@
+.button {
+  background-color: #fdcc52;
+  border: none;
+  border-radius: 5px;
+  color: black;
+  /* padding: 15px 32px; */
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-family: 'Do Hyeon', sans-serif;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+
+.button1 {
+  background-color: Transparent;
+  color: black;
+  border: 2px solid #fdcc52;
+}
+
+.button1:hover {
+  background-color: #fdcc52;
+  color: white;
+  text-decoration: none;
+}
+
+.button_melon1 {
+  background-color: Transparent;
+  color: black;
+  border: 2px solid #04e031;
+}
+
+.button_melon1:hover {
+  background-color: #04e031;
+  color: white;
+  text-decoration: none;
+}
+
+.button_bugs1 {
+  background-color: Transparent;
+  color: black;
+  border: 2px solid #f84230;
+}
+
+.button_bugs1:hover {
+  background-color: #f84230;
+  color: white;
+  text-decoration: none;
+}
+
+}
+
+.button_jenie1 {
+  background-color: Transparent;
+  color: black;
+  border: 2px solid #0eb1e0;
+}
+
+.button_jenie1:hover {
+  background-color: #0eb1e0;
+  color: white;
+  text-decoration: none;
+}
+
+
+
+
+
+/* .button:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+} */
+
+/* #F7D358 */

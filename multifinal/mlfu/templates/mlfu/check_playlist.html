@@ -1,0 +1,92 @@
+{% extends 'mlfu/base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>가장 좋아하는 곡은?</title>
+    </head>
+    <!-- <style>
+      body {
+          margin:20px auto;
+          padding: 0;
+          font-family:"stylish";
+          font-size:0.9em;
+          text-align: center;
+  }
+      ul#navi {
+          width: 200px;
+          text-indent: 10px;
+  }
+      ul#navi, ul#navi ul {
+          margin:0;
+          padding:0;
+          list-style:none;
+  }
+      li.group {
+          margin-bottom: 3px;
+  }
+      li.group div.title {
+          height: 35px;
+          line-height: 35px;
+          background:#9ab92e;
+          cursor:pointer;
+  }
+      ul.sub input {
+          margin-bottom: 2px;
+          height:35px;
+          line-height:35px;
+          background:#f4f4f4;
+          cursor:pointer;
+  }
+      ul.sub input a {
+          display: block;
+          width: 100%;
+          height:100%;
+          text-decoration:none;
+          color:#000;
+  }
+      ul.sub input:hover {
+          background:#cf0;
+  }
+  </style> -->
+  <body>
+    <br><br>
+<center><div><h1><br>Q. 어떤 노래가 가장 마음에 드셨나요?</h1></div></center>
+      <!-- <center><ul id="navi">
+          <li class="group"> -->
+              <!-- <div class="title">playlist</div> -->
+
+                <center><form id="sendsongtitle" action="http://127.0.0.1:8000/camera2/check_playlist/recommend_song/" method="post">
+                  {% csrf_token %}
+                  {% for song in song_info.song_title %}
+                  <!-- <ul class="sub"> -->
+                  <input type="hidden" name="sendid" value="{{song_info.plstid}}">
+                  <input type="submit" name="title" value="{{song}}" style="width:350pt;height:30pt;font-size:20px;font-family:'Do Hyeon';"><br>
+                  {% endfor %}
+                  <br>
+                  <center><input type="button" class="button button1" value="뒤로가기"  style="width:300pt;height:35pt;font-size:20px;" onclick="history.back(-1);"></center>
+                  <!-- <input type="submit" name="send" value="확인" style="width:300pt;height:30pt;font-size:17px;"> -->
+                </form></center>
+          </li>
+      </ul></center>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+
+
+  </body>
+
+
+  </html>
+{% endblock %}

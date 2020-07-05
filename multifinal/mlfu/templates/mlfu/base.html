@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <!-- 첫 페이지를 제외한 모든 페이지에 적용되는 디자인 base -->
+
+    <!-- 파비콘 적용 -->
+    <link href="data:image/x-icon;base64,AAABAAEAEBAQAAAAAAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA1arNAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABEAEQAAAAAAEQARAAAAAAABAAEAAAAAAAEAAQAAAAAAAQABAAAAAAABAAEBEAAAAAEREQEQAAEQAAAAABAAARAAAAAAEAAAEAAAAAAQAAAQAAAAABEQABAAAAAAAAAAERAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//wAA8z8AAPM/AAD7vwAA+78AAPu/AAD7pwAA+CcAAJ/3AACf9wAA3/cAAN/xAADf/wAAx/8AAP//AAD//wAA" rel="icon" type="image/x-icon" />
+
+    <!-- 그라디언트 배경 적용 -->
+    <link rel="stylesheet" type="text/css" href="{% static 'mlfu/css/style_background2.css' %}" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <script src="{% static 'mlfu/js/graph.js' %}"></script>
+
+    <!-- 폰트 수정 -->
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Montserrat&family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Anton|Montserrat|Oswald|Roboto+Slab|Ubuntu&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'mlfu/css/style_button.css' %}" />
+
+    <!-- Plugin CSS -->
+    <link href="{% static 'mlfu/css/navigation_bar.css' %}" rel="stylesheet">
+    <link href="{% static 'mlfu/css/graph.css' %}" rel="stylesheet">
+
+    <!-- modal -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+
+
+    <style media="screen">
+      body {
+        width: 100%;
+        /* color: #fff; */
+        background: linear-gradient(to left, #7b4397, #dc2430);
+      }
+      /* The Modal (background) */
+        .searchModal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 10; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+        /* Modal Content/Box */
+        .search-modal-content {
+        background-color: #fefefe;
+        margin: 15% auto; /* 15% from the top and centered */
+        padding: 20px;
+        border: 1px solid #888;
+        width: 70%; /* Could be more or less, depending on screen size */
+        }
+        #modal {
+          text-align: center;
+        }
+
+    </style>
+
+  </head>
+  <body>
+    <!-- bootstrap 디자인 이용 -->
+    <body id="page-top">
+
+      <!-- Navigation -->
+      <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+        <div class="container">
+          <a class="navbar-brand js-scroll-trigger" href="http://127.0.0.1:8000/#page-top">HearUrFace</a>
+          <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="http://127.0.0.1:8000/#download">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="http://127.0.0.1:8000/#features">Features</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="http://127.0.0.1:8000/#contact">Contact</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="http://127.0.0.1:8000/#contact">Message</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+  </body>
+  {% block content %}
+   {% endblock %}
+</html>

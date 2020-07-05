@@ -1,0 +1,15 @@
+{% extends 'mlfu/base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang= "ko">
+<head>
+<title>제목</title>
+</head>
+<body>
+<h1>hello!</h1>
+{% if uploaded_file_url %}
+  <img src="{{ uploaded_file_url }}">
+{% endif %}
+</body>
+</html>
+{% endblock %}

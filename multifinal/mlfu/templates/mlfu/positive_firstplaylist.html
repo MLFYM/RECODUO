@@ -1,0 +1,152 @@
+{% extends 'mlfu/base.html' %}
+{% load staticfiles %}
+{% block content %}
+<html>
+<head>
+  <title>감정 분류 결과</title>
+  <style>
+a {
+ line-height: 42px;
+ text-align: center;
+}
+#face {
+  outline-style: groove;
+  outline-width: 5px;
+  outline-color: #fdcc52
+}
+
+#emotion_graph{
+  margin:49px;
+}
+
+td {
+  padding: 13px;
+}
+
+  </style>
+</head>
+  <body>
+    <br>
+    <br>
+    <br>
+    <center><table>
+      <tr>
+        <td>
+        {% if result.uploaded_file_url %}
+          <center><img src="{{ result.uploaded_file_url }}" width="450" id="face"><br><br>
+          </center>
+        {% endif %}
+        </td>
+        <td>
+            <div class="zt-span6 last" id="emotion_graph">
+<h2><strong>Emotion recognition</strong></h2><br>
+<div class="zt-skill-bar"><div data-width="{{result.neutral_p}}" style="background-color:#17EA00;">Neutral<span>{{result.neutral_p}}%</span></div></div><br>
+<div class="zt-skill-bar"><div data-width="{{result.positive_p}}" style="background-color:#0400F9;">Positive<span>{{result.positive_p}}%</span></div></div><br>
+<div class="zt-skill-bar"><div data-width="{{result.negative_p}}" style="background-color:#e00e1b;">Negative<span>{{result.negative_p}}%</span></div></div>
+          </div>
+          <h1>{{result.Positive}}!</h1>
+          <br>
+        </td>
+      </tr>
+  </table>
+      </center>
+    <center><button id="showplaylist" class="button button1" style="width:180pt;height:30pt;font-size:17px;" onclick="location.href='#player'">좋습니다. 음악을 틀어주세요:)</button></center>
+    <br>
+    <center><a href="http://127.0.0.1:8000/test/" class="button button1" style="width:180pt;height:30pt;font-size:17px;">다시 찍을래요!</a></center>
+<br>
+    <br>
+    <br>
+   <center><div id="player"></div></center><br>
+   <center><div><h2>음악이 마음에 드시나요?</h2></div></center><br>
+   <form method="POST" name="send_playlist" action="http://127.0.0.1:8000/camera2/check_playlist/">
+     {% csrf_token %}
+     <input type="hidden" name="playlistid" value="">
+     <input type="hidden" name="videoid" value="">
+     <center><input type="button" class="button button1" id='recommend_start' value="예" style="width:180pt;height:30pt;font-size:17px;" onclick="videoidsubmit(); send_playlist.submit();"></center>
+   </form>
+   <br>
+   <center><a href="http://127.0.0.1:8000/camera2/positive/" class="button button1" style="width:180pt;height:30pt;font-size:17px;">아니오</a></center>
+
+<style type="text/css">
+div{
+text-align: center;
+}
+</style>
+    <script>
+        var testplay = new Array('PLPKZ6FAxaaf-9VWC5yUVo3XKBXujNS9Fp', 'PLPKZ6FAxaaf8lr7Cs_ebaZ7BAZomtAAte', 'PLPKZ6FAxaaf_mlK960KUVNp6GGW3TCfQe', 'PLPKZ6FAxaaf9mBJBR9GfQrn-vhYtU1hMf', 'PLPKZ6FAxaaf_7OD2RK8hUGSCCJd91uFQ6', 'PLPKZ6FAxaaf_-0fbjwrvsGIXdHtkkRx7-', 'PLPKZ6FAxaaf-CypAyYlCEhwC021-L7RG6', 'PLPKZ6FAxaaf-9VWC5yUVo3XKBXujNS9Fp', 'PLPKZ6FAxaaf-1DlgYO-jNoGrOWs5hxtnF', 'PLPKZ6FAxaaf9ol1GU68Z1F3BmXOMM2yYg', 'PLPKZ6FAxaaf-PFri6jI4T6gc-eFoM6vuS' )
+        var playlist = randomItem(testplay);
+        function randomItem(a) { return a[Math.floor(Math.random() * a.length)]; }
+
+        // 2. This code loads the IFrame Player API code asynchronously.
+        var tag = document.createElement('script');
+
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        // 3. This function creates an <iframe> (and YouTube player)
+        //    after the API code downloads.
+        function onYouTubeIframeAPIReady() {
+            var numPl = Math.floor((Math.random() * 100) + 1);
+            var player = new YT.Player("player", {
+                height: '290',
+                width: '540',
+                playerVars: {
+                    listType:'playlist',
+                    list: playlist,
+                    index: numPl,
+                    autoplay: 1,
+                    loop: 1,
+                    mute: 1,
+    },
+                events: {
+                    'onReady': function (event) {
+                        //event.target.cuePlaylist({list: "PLPKZ6FAxaaf9ve5PmOfLul2YmKqFy1BiW"});
+                        //event.target.playVideo();
+                        setTimeout(function() {
+                            event.target.setShuffle({'shufflePlaylist' : true});
+                        }, 100);
+                    }
+                }
+            });
+            myPlayer = player;
+            console.log(myPlayer);
+            return myPlayer;
+        }
+        document.send_playlist.playlistid.value=playlist;
+
+        function videoidsubmit(){
+          var video_id = myPlayer.getVideoData()[Object.keys(myPlayer.getVideoData())[0]];
+          console.log(video_id)
+          document.send_playlist.videoid.value=video_id;
+        }
+        setTimeout(function() {
+          document.getElementById('showplaylist').click();
+        }, 4000);
+
+    </script>
+  <div id="modal" class="searchModal">
+  <div class="search-modal-content" style="width: 376px;">
+  <div class="page-header">
+  <h2>음악 추천 중입니다....</h2>
+  <hr>
+  </div>
+  <div class="row">
+  <div class="col-sm-12">
+  <img src="{% static 'img/Ripple-1s-200px.gif' %}" style="width: 200px; height: 200px;" alt="">
+  </div>
+  </div>
+  </div>
+  </div>
+  <script type="text/javascript">
+      $(document).ready(function(){
+        $("#recommend_start").button().click(function(){
+      $("#modal").show();
+   });
+});
+    </script>
+<br>
+<br>
+<br>
+  </body>
+</html>
+  {% endblock %}

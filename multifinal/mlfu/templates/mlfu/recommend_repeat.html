@@ -1,0 +1,130 @@
+{% extends 'mlfu/base.html' %}
+{% load staticfiles %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>추천 곡 재생</title>
+    <style>
+      #mainNav{
+        padding:9px;
+      }
+    </style>
+  </head>
+  <body>
+    <br>
+    <br>
+    <br>
+    <br>
+    <center>  <div id="player"></div></center>
+    <script>
+    var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        function onYouTubeIframeAPIReady(fileName) {
+            var player = new YT.Player('player', {
+                height: '290',
+                width: '560',
+                videoId: '{{ song_result.recomm_song.0 }}',
+                events: {
+                  'onReady': onPlayerReady,
+                  'onStateChange': onPlayerStateChange
+                }
+            });
+        }
+        function onPlayerReady(event) {
+             event.target.playVideo();
+         }
+        function onPlayerStateChange(event) {
+          if(event.data === 0) {
+            setTimeout(function() {
+              document.getElementById('recommend_loop').click();
+            }, 5000);
+    }
+}
+    </script>
+
+    {% if "{{song_result.recommend_video.0}}" == "{{song_result.recomm_song.1}}" %}
+    <center><h1>추천곡은 "{{song_result.recommend_video.1}}"의 "{{song_result.recommend_video.0}}"입니다</h1></center>
+
+    {% else %}
+    <center><h1>추천곡은 "{{song_result.recomm_song.2}}"의 "{{song_result.recomm_song.1}}"입니다</h1></center>
+
+    {% endif %}
+    <br>
+    <form method="POST" name="send_songname" action="http://127.0.0.1:8000/recommend_repeat/">
+      {% csrf_token %}
+      <input type="hidden" name="songname" value="{{song_result.recommend_video.0}}">
+      <input type="hidden" name="songartist" value="{{song_result.recommend_video.1}}">
+      <center><input type="button" id="recommend_loop" class="button button1" value="비슷한 곡 추천받기" style="width:245pt;height:35pt;font-size:20px;" onclick=send_songname.submit();></center>
+    </form>
+    <br>
+    <center><input type="button" class="button button1" value="이전 곡 다시듣기"  style="width:245pt;height:35pt;font-size:20px;" onclick="history.back(-1);"></center>
+    <br>
+    {% if "{{song_result.recommend_video.0}}" == "{{song_result.recomm_song.1}}" %}
+    <center>
+      <a href="https://www.melon.com/search/total/index.htm?q={{ song_result.recommend_video.1 }}+{{ song_result.recommend_video.0 }}" target="_blank"><img src="{% static 'img/melon2.png' %}" width='110pt' border="0"/></a>
+      <a href="https://music.bugs.co.kr/search/integrated?q={{ song_result.recommend_video.1 }}+{{song_result.recommend_video.0 }}" target="_blank"><img src="{% static 'img/logo_bugs.png' %}" width='92pt' border="0"/></a>&nbsp;&nbsp;
+      <a href="https://www.genie.co.kr/search/searchMain?query={{song_result.recommend_video.1 }}+{{song_result.recommend_video.0 }}" target="_blank"><img src="{% static 'img/geine.png' %}" width='90pt' border="0"/></a>&nbsp;&nbsp;
+
+
+    </center>
+    {% else %}
+    <center>
+      <a href="https://www.melon.com/search/total/index.htm?q={{ song_result.recomm_song.2 }}+{{ song_result.recomm_song.1 }}" target="_blank"><img src="{% static 'img/melon2.png' %}" width='110pt' border="0"/></a>
+      <a href="https://music.bugs.co.kr/search/integrated?q={{ song_result.recomm_song.2 }}+{{song_result.recomm_song.1 }}" target="_blank"><img src="{% static 'img/logo_bugs.png' %}" width='92pt' border="0"/></a>&nbsp;&nbsp;
+      <a href="https://www.genie.co.kr/search/searchMain?query={{song_result.recomm_song.2 }}+{{song_result.recomm_song.1 }}" target="_blank"><img src="{% static 'img/geine.png' %}" width='90pt' border="0"/></a>
+
+    </center>
+    {% endif %}
+    <p>
+      <center><div id="disqus_thread" style="width:1000px;"></div></center>
+      <script>
+
+      /**
+      *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+      *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+      /*
+      var disqus_config = function () {
+      this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      };
+      */
+      (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://mlfu.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+      })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </p>
+    <div id="modal" class="searchModal">
+    <div class="search-modal-content" style="width: 376px;">
+    <div class="page-header">
+    <h2>음악 추천 중입니다....</h2>
+    <hr>
+    </div>
+    <div class="row">
+    <div class="col-sm-12">
+    <img src="{% static 'img/Ripple-1s-200px.gif' %}" style="width: 200px; height: 200px;" alt="">
+    </div>
+    </div>
+    </div>
+    </div>
+    <script type="text/javascript">
+    
+        $(document).ready(function(){
+          $("#recommend_loop").button().click(function(){
+        $("#modal").show();
+     });
+  });
+      </script>
+    <br>
+    <br>
+    <br>
+  </body>
+</html>
+{% endblock %}

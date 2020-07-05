@@ -1,0 +1,31 @@
+{% extends 'mlfu/base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>오류</title>
+    <style>
+    /* a태그 버튼 가운데 정렬하기 */
+      a {
+        line-height: 42px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <br>
+    <!-- 얼굴 검출되지 않은 이미지 -->
+    {% if result.uploaded_file_url %}
+    <!-- 화면 출력 시 이미지 크기 축소 -->
+      <center><img src="{{ result.uploaded_file_url }}" width="400"></center>
+    {% endif %}
+    <br>
+    <!-- 메시지 출력 -->
+    <center><h1>{{result.Notfound}}</h1></center>
+    <br>
+    <center><a href="http://127.0.0.1:8000/test/" class="button button1" style="width:180pt;height:30pt;font-size:17px;">되돌아가기</a></center>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  </body>
+</html>
+{% endblock %}
