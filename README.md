@@ -2,6 +2,8 @@
 
 > 딥러닝을 활용한 얼굴 감정인식 기반 음악 추천서비스의 웹 및 기술구현 파트 정리에 대한 내용입니다.
 
+:book:[프로젝트 wiki 바로가기](https://github.com/MLFYM/RECODUO/wiki)
+
 
 
 ## 📽 프로젝트 소개
