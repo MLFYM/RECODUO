@@ -66,37 +66,37 @@
 ```shell
 # MLFYM
 ├── 📂 multifinal
-└── 📂 media
-└── 📂 mlfu
-    ├── 📂 data
-    ├── 📂 migrations
-    ├── 📂 MLFYM
-    ├── 📂 phantomjs.2.1.1-windows
-    ├── 📂 static
-    ├── 📂 templates
-    |   ├── 📄 admin.py
-    |   ├── 📄 apps.py
-    |   ├── 📄 face_functions.py
-    |   ├── 📄 forms.py
-    |   ├── 📄 google_scraping.py
-    |   ├── 📄 haarcascade_frontface.xml
-    |   ├── 📄 MobileNetV2(full).h5
-    |   ├── 📄 Model_ALS.pkl
-    |   ├── 📄 models.py
-    |   ├── 📄 music_recommend_system.py
-    |   ├── 📄 R_data.npz
-    |   ├── 📄 tag2vec.model
-    |   ├── 📄 views.py
-    |   └── 📄 ...
-    ├── 📂 multifinal
-    |   ├── 📄 settings.py
-    |   ├── 📄 urls.py
-    |   └── 📄 wsgi.py
-    ├── 📂 statuc
-    |   ├── 📄 db.sqlite3
-    |   ├── 📄 ghostdriver.log
-    |   ├── 📄 manage.py
-    |   └── 📄 requirements.txt
+├── 📂 media
+├── 📂 mlfu
+|   ├── 📂 data
+|   ├── 📂 migrations
+|   ├── 📂 MLFYM
+|   ├── 📂 phantomjs.2.1.1-windows
+|   ├── 📂 static
+|   ├── 📂 templates
+|   |   ├── 📄 admin.py
+|   |   ├── 📄 apps.py
+|   |   ├── 📄 face_functions.py
+|   |   ├── 📄 forms.py
+|   |   ├── 📄 google_scraping.py
+|   |   ├── 📄 haarcascade_frontface.xml
+|   |   ├── 📄 MobileNetV2(full).h5
+|   |   ├── 📄 Model_ALS.pkl
+|   |   ├── 📄 models.py
+|   |   ├── 📄 music_recommend_system.py
+|   |   ├── 📄 R_data.npz
+|   |   ├── 📄 tag2vec.model
+|   |   ├── 📄 views.py
+|   |   └── 📄 ...
+|   └── 📂 multifinal
+|       ├── 📄 settings.py
+|       ├── 📄 urls.py
+|       └── 📄 wsgi.py
+|   
+├── 📄 db.sqlite3
+├── 📄 ghostdriver.log
+├── 📄 manage.py
+└── 📄 requirements.txt
 ```
 
 
